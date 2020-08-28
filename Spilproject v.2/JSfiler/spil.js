@@ -26,7 +26,7 @@ function setup() {
 // Sætter tiden til 0 så spillet starter med det samme
 let tid = 0
 let score = 0
-let millisekunder_imellem = 9000
+const millisekunder_imellem = 9000
 let tid_imellem = millisekunder_imellem
 
 // Funktionen draw kører i loop indtil programmet er færdigt med at køre
@@ -141,6 +141,7 @@ function tasterne(randomNumbersList) {
 		rect(50, 50, 50, 50);
 	}
 	else if (knap1_pressed === true) {
+		rigtige_taster[0] = -1;
 		fill(255, 0, 0);
 		rect(50, 50, 50, 50);
 	}
@@ -159,6 +160,7 @@ function tasterne(randomNumbersList) {
 		rect(150, 50, 50, 50);
 	}
 	else if (knap2_pressed === true) {
+		rigtige_taster[1] = -1;
 		fill(255, 0, 0);
 		rect(150, 50, 50, 50);
 	}
@@ -177,6 +179,7 @@ function tasterne(randomNumbersList) {
 		rect(250, 50, 50, 50);
 	}
 	else if (knap3_pressed === true) {
+		rigtige_taster[2] = -1;
 		fill(255, 0, 0);
 		rect(250, 50, 50, 50);
 	}
@@ -195,6 +198,7 @@ function tasterne(randomNumbersList) {
 		rect(50, 150, 50, 50);
 	}
 	else if (knap4_pressed === true) {
+		rigtige_taster[3] = -1;
 		fill(255, 0, 0);
 		rect(50, 150, 50, 50);
 	}
@@ -213,6 +217,7 @@ function tasterne(randomNumbersList) {
 		rect(150, 150, 50, 50);
 	}
 	else if (knap5_pressed === true) {
+		rigtige_taster[4] = -1;
 		fill(255, 0, 0);
 		rect(150, 150, 50, 50);
 	}
@@ -231,6 +236,7 @@ function tasterne(randomNumbersList) {
 		rect(250, 150, 50, 50);
 	}
 	else if (knap6_pressed === true) {
+		rigtige_taster[5] = -1;
 		fill(255, 0, 0);
 		rect(250, 150, 50, 50);
 	}
@@ -249,6 +255,7 @@ function tasterne(randomNumbersList) {
 		rect(50, 250, 50, 50);
 	}
 	else if (knap7_pressed === true) {
+		rigtige_taster[6] = -1;
 		fill(255, 0, 0);
 		rect(50, 250, 50, 50);
 	}
@@ -267,6 +274,7 @@ function tasterne(randomNumbersList) {
 		rect(150, 250, 50, 50);
 	}
 	else if (knap8_pressed === true) {
+		rigtige_taster[7] = -1;
 		fill(255, 0, 0);
 		rect(150, 250, 50, 50);
 	}
@@ -285,6 +293,7 @@ function tasterne(randomNumbersList) {
 		rect(250, 250, 50, 50);
 	}
 	else if (knap9_pressed === true) {
+		rigtige_taster[8] = -1;
 		fill(255, 0, 0);
 		rect(250, 250, 50, 50);
 	}
@@ -310,6 +319,9 @@ function randomNumbers() {
 
 // Tjekker om der skal gives point
 function pointTjek(rigtige_taster) {
+	if (rigtige_taster.includes(-1) === true) {
+		return false
+	}
 	nummer_af_rigtige_taster = 0
 	for (let i = 0; i < rigtige_taster.length; i++) {
 		if (rigtige_taster[i] === 1) {
@@ -325,6 +337,7 @@ function pointTjek(rigtige_taster) {
 	}
 }
 
+// Tegner pointene
 function drawPoints(score) {
 	fill(255, 255, 255);
 	rect(350, 120, 150, 110);
@@ -339,6 +352,7 @@ function drawPoints(score) {
 	}
 }
 
+// Tegner Tiden
 function drawTime(tid_tilbage) {
 	fill(255, 255, 255);
 	rect(470, 250, 30, 30);
