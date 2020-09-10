@@ -1,11 +1,15 @@
 let hjerte;
+let beep;
 
 function preload() {
 	hjerte = loadImage('assets/hjerte.png')
+	soundFormats('m4a');
+	beep = loadSound('assets/lyd/beep');
 }
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
+	mp = loadImage('assets/mp.jpeg');
 	// Sætter taster til de rigtige taster
 	knap1 = 'q';
 	knap2 = 't';
@@ -41,6 +45,7 @@ let bool_om_der_er_givet_point = false;
 
 // Funktionen draw kører i loop indtil programmet er færdigt med at køre
 function draw() {
+	background(mp);
 	if (millis() > tid) {
 		randomNumbersList = randomNumbers()
 		tid += tid_imellem
@@ -344,6 +349,7 @@ function pointTjek(rigtige_taster) {
 		}
 	}
 	if (nummer_af_rigtige_taster === 4) {
+		beep.play()
 		score += 1
 		return true
 	}
@@ -395,7 +401,7 @@ function drawLiv(liv) {
 		return liv;
 	}
 	else {
-		return liv;
 		doed = false;
+		return liv;
 	}
 }
