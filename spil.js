@@ -1,7 +1,19 @@
 let hjerte;
+let clap;
+let ding;
+let mlg;
+let tabe;
+let error;
+let mps;
 
 function preload() {
 	hjerte = loadImage('assets/hjerte.png')
+	clap = loadSound('assets/clapping.mp3')
+	ding = loadSound('assets/ding.mp3')
+	mlg = loadSound('assets/mlglyd.mp3')
+	tabe = loadSound('assets/windowsShutdown.mp3')
+	error = loadSound('assets/error.mp3')
+	mps = loadImage('assets/mps.jpeg')
 }
 
 function setup() {
@@ -41,11 +53,13 @@ let bool_om_der_er_givet_point = false;
 
 // Funktionen draw kører i loop indtil programmet er færdigt med at køre
 function draw() {
+	background(mps);
 	if (millis() > tid) {
 		randomNumbersList = randomNumbers()
 		tid += tid_imellem
 		if (bool_om_der_er_givet_point === false) {
 			liv -= 1;
+			error.play();
 		}
 	}
 	let rigtige_taster = tasterne(randomNumbersList)
@@ -345,6 +359,13 @@ function pointTjek(rigtige_taster) {
 	}
 	if (nummer_af_rigtige_taster === 4) {
 		score += 1
+		ding.play();
+		fill(0,255,0);
+		rect(0,0,windowWidth,windowHeight);
+		if (score === 25){
+			mlg.play();
+		}
+
 		return true
 	}
 	else {
@@ -392,6 +413,7 @@ function drawLiv(liv) {
 		liv = 3 + 1;
 		score = 0
 		doed = true;
+		tabe.play();
 		return liv;
 	}
 	else {

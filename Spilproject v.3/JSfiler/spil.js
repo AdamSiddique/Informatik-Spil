@@ -51,6 +51,7 @@ function draw() {
 		tid += tid_imellem
 		if (bool_om_der_er_givet_point === false) {
 			liv -= 1;
+			printRoed();
 		}
 	}
 	let rigtige_taster = tasterne(randomNumbersList)
@@ -403,5 +404,14 @@ function drawLiv(liv) {
 	else {
 		doed = false;
 		return liv;
+	}
+}
+
+function printRoed() {
+	t1 = millis();
+	t2 = millis() + 100;
+	while (t1 < t2) {
+		fill(255, 0, 0)
+		rect(0, 0, windowWidth, windowHeight);
 	}
 }
